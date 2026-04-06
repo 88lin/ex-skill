@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """微信聊天记录解析器
-
-支持主流导出工具的格式：
-- WeChatMsg 导出（txt/html/csv）
-- 留痕导出（json）
-- PyWxDump 导出（sqlite）
-- 手动复制粘贴（纯文本）
+支持的输入格式：
+- txt / csv（带时间戳的聊天记录文本）
+- html / htm（带样式的聊天记录页面）
+- json（结构化聊天数据）
+- sqlite / db（数据库文件）
+- 纯文本（手动复制粘贴）
 
 Usage:
     python3 wechat_parser.py --file <path> --target <name> --output <output_path> [--format auto]
