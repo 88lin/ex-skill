@@ -113,9 +113,9 @@ allowed-tools: Read, Write, Edit, Bash
 
 ---
 
-#### 方式 A：微信聊天记录导出
+#### 方式 A：微信聊天记录
 
-支持主流导出工具的格式：
+支持多种格式的聊天记录文件：
 
 ```
 python3 ${CLAUDE_SKILL_DIR}/tools/wechat_parser.py \
@@ -125,11 +125,13 @@ python3 ${CLAUDE_SKILL_DIR}/tools/wechat_parser.py \
   --format auto
 ```
 
-支持的格式：
-* **WeChatMsg 导出**（推荐）：自动识别 txt/html/csv
-* **留痕导出**：JSON 格式
-* **PyWxDump 导出**：SQLite 数据库
-* **手动复制粘贴**：纯文本
+支持的输入格式：
+* **txt / csv**：最通用，多数导出工具默认格式
+* **html**：带样式的聊天记录页面
+* **json**：结构化数据
+* **纯文本粘贴**：直接从聊天窗口复制的内容
+
+> 微信聊天记录的获取方式详见 [导入指南](create-ex/docs/EXPORT_GUIDE.md)
 
 解析提取维度：
 * 高频词和口头禅
@@ -141,7 +143,7 @@ python3 ${CLAUDE_SKILL_DIR}/tools/wechat_parser.py \
 
 ---
 
-#### 方式 B：QQ 聊天记录导出
+#### 方式 B：QQ 聊天记录
 
 ```
 python3 ${CLAUDE_SKILL_DIR}/tools/qq_parser.py \
@@ -150,7 +152,7 @@ python3 ${CLAUDE_SKILL_DIR}/tools/qq_parser.py \
   --output /tmp/qq_out.txt
 ```
 
-支持 QQ 消息管理器导出的 txt 和 mht 格式。
+支持 txt 和 mht 格式。可以通过手机 QQ 的「合并转发」发到电脑端后复制保存。
 
 ---
 
@@ -193,20 +195,19 @@ python3 ${CLAUDE_SKILL_DIR}/tools/photo_analyzer.py \
 ```
 可以聊聊这些（想到什么说什么）：
 
-🗣️ ta的口头禅是什么？
-💬 吵架的时候ta通常怎么说？
-🍜 ta最爱吃什么？
-📍 你们常去哪些地方？
-🎵 ta喜欢什么音乐/电影？
-😤 ta生气的时候是什么样？
-💕 ta最让你心动的瞬间？
-💔 你们是怎么分开的？
+  ta的口头禅是什么？
+  吵架的时候ta通常怎么说？
+  ta最爱吃什么？
+  你们常去哪些地方？
+  ta喜欢什么音乐/电影？
+  ta生气的时候是什么样？
+  ta最让你心动的瞬间？
+  你们是怎么分开的？
 ```
 
 ---
 
 如果用户说"没有文件"或"跳过"，仅凭 Step 1 的手动信息生成 Skill。
-
 ### Step 3：分析原材料
 
 将收集到的所有原材料和用户填写的基础信息汇总，按以下两条线分析：
